@@ -1,0 +1,46 @@
+﻿<h3>Livraria com uso de AngularJS</h3>
+<hr />
+<div ng-controller="livrosCtrl">
+    <table class="table table-striped">
+        <tr ng-repeat="livro in livros">
+            <td>{{livro.Titulo}}</td>
+            <td>{{livro.Autor}}</td>
+            <td>{{livro.Editor}}</td>
+            <td>{{livro.Isbn}}</td>
+            <td class="text-right">
+                <button class="btn btn-danger" ng-click="Deletar(livro)" data-toggle="tooltip" title="Deletar">X</button>
+            </td>
+            <td>
+                <button class="btn btn-success" ng-click="Selecionar(livro)" data-toggle="tooltip" title="Selecionar">S</button>
+            </td>
+        </tr>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Editor</th>
+            <th>ISBN</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" required ng-model="livro.Titulo" placeholder="Título do livro" />
+            </td>
+            <td>
+                <input type="text" required ng-model="livro.Autor" placeholder="Autor do livro" />
+            </td>
+            <td>
+                <input type="text" required ng-model="livro.Editor" placeholder="Editor do livro" />
+            </td>
+            <td>
+                <input type="text" required ng-model="livro.Isbn" placeholder="ISBN do livro" />
+            </td>
+            <td>
+                <a href="#" class="btn btn-primary" ng-click="Incluir(livro)" data-toggle="tooltip" title="Incluir"
+                   ng-disabled="!livro.Titulo || !livro.Autor || !livro.Editor || !livro.Isbn">Incluir</a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-success" ng-click="Alterar(livro)" data-toggle="tooltip" title="Alterar"
+                   ng-disabled="!livro.Titulo || !livro.Autor || !livro.Editor || !livro.Isbn">Alterar</a>
+            </td>
+        </tr>
+    </table>
+</div>

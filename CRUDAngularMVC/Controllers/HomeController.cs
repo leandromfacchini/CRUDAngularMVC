@@ -40,20 +40,19 @@ namespace CRUDAngularMVC.Controllers
             }
         }
 
-        public string AtualizadorLivro(Livro context)
+        public string AtualizadorLivro(Livro livro)
         {
-            if (context != null)
+            if (livro != null)
             {
                 using (LivroContexto db = new LivroContexto())
                 {
-                    int _id = Convert.ToInt32(context.Id);
+                    int _id = Convert.ToInt32(livro.Id);
                     Livro _livro = db.Livro.Where(c => c.Id == _id).FirstOrDefault();
-                    _livro.Titulo = context.Titulo;
-                    _livro.Autor = context.Autor;
-                    _livro.Editor = context.Editor;
-                    _livro.Isbn = context.Isbn;
+                    _livro.Titulo = livro.Titulo;
+                    _livro.Autor = livro.Autor;
+                    _livro.Editor = livro.Editor;
+                    _livro.Isbn = livro.Isbn;
 
-                    db.Livro.Add(_livro);
                     db.SaveChanges();
 
                     return "Registro atualizado com sucesso.";
@@ -89,13 +88,13 @@ namespace CRUDAngularMVC.Controllers
             }
         }
 
-        public string Deletar(string livroId)
+        public string Deletar(Livro livro)
         {
-            if (!String.IsNullOrWhiteSpace(livroId))
+            if (livro != null)
             {
                 try
                 {
-                    int id = Convert.ToInt32(livroId);
+                    int id = livro.Id;
                     using (LivroContexto db = new LivroContexto())
                     {
                         var _livro = db.Livro.Find(id);
